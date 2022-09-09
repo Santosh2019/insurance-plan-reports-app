@@ -15,7 +15,6 @@ public class AppRunner implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
 
 		EligibilityDetails elgDetails = new EligibilityDetails();
 		elgDetails.setEligibilityId(1);
@@ -60,6 +59,5 @@ public class AppRunner implements ApplicationRunner {
 		object2.setPlanStatus("Denied");
 		object2.setEmaiId("ganesh@gmail.com");
 		repo.save(object2);
-		
 	}
 }

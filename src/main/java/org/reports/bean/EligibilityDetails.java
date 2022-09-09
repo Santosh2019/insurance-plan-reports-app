@@ -56,117 +56,152 @@ public class EligibilityDetails {
 	@Column(name = "END_DATE")
 	private LocalDate planEndDate;
 
+	
+	
+	
+	
+	
+	
+
 	public Integer getEligibilityId() {
 		return eligibilityId;
 	}
+
 
 	public void setEligibilityId(Integer eligibilityId) {
 		this.eligibilityId = eligibilityId;
 	}
 
+
 	public long getMobileNumber() {
 		return mobileNumber;
 	}
+
 
 	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public String getEmaiId() {
-		return emaiId;
-	}
-
-	public void setEmaiId(String emaiId) {
-		this.emaiId = emaiId;
-	}
-
-	public String getPlanName() {
-		return planName;
-	}
-
-	public void setPlanName(String planName) {
-		this.planName = planName;
-	}
-
-	public Long getSsn() {
-		return ssn;
-	}
-
-	public void setSsn(Long ssn) {
-		this.ssn = ssn;
-	}
-
-	public Character getGender() {
-		return gender;
-	}
-
-	public void setGender(Character gender) {
-		this.gender = gender;
-	}
-
-	public String getPlanStatus() {
-		return planStatus;
-	}
-
-	public void setPlanStatus(String planStatus) {
-		this.planStatus = planStatus;
-	}
-
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public LocalDate getUpdatedDate() {
-		return updatedDate;
-	}
-
-	public void setUpdatedDate(LocalDate updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public LocalDate getPlanStartDate() {
-		return planStartDate;
-	}
-
-	public void setPlanStartDate(LocalDate planStartDate) {
-		this.planStartDate = planStartDate;
-	}
-
-	public LocalDate getPlanEndDate() {
-		return planEndDate;
-	}
-
-	public void setPlanEndDate(LocalDate planEndDate) {
-		this.planEndDate = planEndDate;
-	}
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+	public String getEmaiId() {
+		return emaiId;
+	}
+
+
+	public void setEmaiId(String emaiId) {
+		this.emaiId = emaiId;
+	}
+
+
+	public String getPlanName() {
+		return planName;
+	}
+
+
+	public void setPlanName(String planName) {
+		this.planName = planName;
+	}
+
+
+	public Long getSsn() {
+		return ssn;
+	}
+
+
+	public void setSsn(Long ssn) {
+		this.ssn = ssn;
+	}
+
+
+	public Character getGender() {
+		return gender;
+	}
+
+
+	public void setGender(Character gender) {
+		this.gender = gender;
+	}
+
+
+	public String getPlanStatus() {
+		return planStatus;
+	}
+
+
+	public void setPlanStatus(String planStatus) {
+		this.planStatus = planStatus;
+	}
+
+
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+
+	public LocalDate getUpdatedDate() {
+		return updatedDate;
+	}
+
+
+	public void setUpdatedDate(LocalDate updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+
+	public LocalDate getPlanStartDate() {
+		return planStartDate;
+	}
+
+
+	public void setPlanStartDate(LocalDate planStartDate) {
+		this.planStartDate = planStartDate;
+	}
+
+
+	public LocalDate getPlanEndDate() {
+		return planEndDate;
+	}
+
+
+	public void setPlanEndDate(LocalDate planEndDate) {
+		this.planEndDate = planEndDate;
+	}
+
 
 	@Override
 	public String toString() {

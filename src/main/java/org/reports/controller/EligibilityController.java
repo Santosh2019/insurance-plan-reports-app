@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.reports.request.SearchRequest;
 import org.reports.response.SearchResponse;
 import org.reports.service.EligibilityService;
-import org.reports.serviceimpl.EligibilityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +22,7 @@ import com.lowagie.text.DocumentException;
 public class EligibilityController {
 
 	@Autowired
-	private EligibilityServiceImpl reportsServiceImpl;
-	
-	@Autowired
 	private EligibilityService eligibilityService;
-	
-	
 	
 	@GetMapping("/plans")
 	public ResponseEntity<List<String>> getPlanNames() {
@@ -47,10 +41,9 @@ public class EligibilityController {
 	}
 
 	@PostMapping("/search")
-	public ResponseEntity<List<SearchResponse>> getSearch(@RequestBody SearchRequest request) {
-
+	public ResponseEntity<List<SearchResponse>> getSearch(@RequestBody SearchRequest request) 
+	{
 		List<SearchResponse> response = eligibilityService.search(request);
-
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
@@ -60,7 +53,7 @@ public class EligibilityController {
 		String headerKey = "Content-Disposition";
 		String headerValue = "attachment;filename=Plan-Report.xls";
 		response.setHeader(headerKey, headerValue);
-		reportsServiceImpl.generateExcel(response);
+		eligibilityService.generateExcel(response);
 	}
 
 	@GetMapping("/pdf")
@@ -69,8 +62,6 @@ public class EligibilityController {
 		String headerKey = "Content-Disposition";
 		String headerValue = "attachment;filename=data.pdf";
 		response.setHeader(headerKey, headerValue);
-		reportsServiceImpl.generatePDF(response);
-
+		eligibilityService.generatePDF(response);
 	}
-
 }

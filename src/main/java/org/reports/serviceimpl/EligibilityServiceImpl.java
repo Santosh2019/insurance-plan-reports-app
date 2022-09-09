@@ -1,8 +1,8 @@
-
 package org.reports.serviceimpl;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +37,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class EligibilityServiceImpl implements EligibilityService {
 
 	@Autowired
-	EligibilityRepository eligibilityRepository;
+	private EligibilityRepository eligibilityRepository;
 
 	@Override
 	public List<String> getUniquePlanNames() {
@@ -46,43 +46,45 @@ public class EligibilityServiceImpl implements EligibilityService {
 
 	@Override
 	public List<String> getUniquePlanStatus() {
-		// TODO Auto-generated method stub
+
 		return eligibilityRepository.findPlanStatus();
 	}
 
 	@Override
 	public List<SearchResponse> search(SearchRequest request) {
-		// TODO Auto-generated method stub
 
 		List<SearchResponse> response = new ArrayList<>();
 
-		EligibilityDetails eligibilityDetails = new EligibilityDetails();
+		EligibilityDetails queryBuilder = new EligibilityDetails();
 
 		String planName = request.getPlanName();
 		if (planName != null && !planName.equals("")) {
-			eligibilityDetails.setPlanName("");
-		}
-		String planStatus = request.getPlanStatus();
-		System.out.println(planStatus);
-		if (planStatus != null && !planStatus.equals(""))
-		{
-			eligibilityDetails.setPlanStatus(planStatus);
+			queryBuilder.setPlanName(planName);
 		}
 
-		System.out.println(eligibilityDetails);
-		
-		Example<EligibilityDetails>example=Example.of(eligibilityDetails);
-		
+		String planStatus = request.getPlanStatus();
+		if (planStatus != null && !planStatus.equals("")) {
+			queryBuilder.setPlanStatus(planStatus);
+		}
+
+		LocalDate planStartDate = request.getPlanStartDate();
+		if (planStartDate != null) {
+			queryBuilder.setPlanStartDate(planStartDate);
+		}
+
+		LocalDate planEndDate = request.getPlanEndDate();
+		if (planEndDate != null) {
+			queryBuilder.setPlanEndDate(planEndDate);
+		}
+
+		Example<EligibilityDetails> example = Example.of(queryBuilder);
+
 		List<EligibilityDetails> entities = eligibilityRepository.findAll(example);
 
 		for (EligibilityDetails entity : entities) {
-
 			SearchResponse sr = new SearchResponse();
-
 			BeanUtils.copyProperties(entity, sr);
-
 			response.add(sr);
-
 		}
 
 		return response;
@@ -111,7 +113,8 @@ public class EligibilityServiceImpl implements EligibilityService {
 
 		headerRow.createCell(5).setCellValue("SSN");
 
-		int i = 0;
+		int i = 1;
+
 		for (EligibilityDetails entity : entities) {
 
 			HSSFRow dataRow = sheet.createRow(i);
@@ -122,14 +125,13 @@ public class EligibilityServiceImpl implements EligibilityService {
 
 			dataRow.createCell(2).setCellValue(entity.getMobileNumber());
 
-			dataRow.createCell(3).setCellValue(String.valueOf(entity));
+			dataRow.createCell(3).setCellValue(String.valueOf(entity.getGender()));
 
 			dataRow.createCell(4).setCellValue(entity.getEmaiId());
 
 			dataRow.createCell(5).setCellValue(entity.getSsn());
 
 			i++;
-
 		}
 
 		ServletOutputStream outPutStream = response.getOutputStream();
@@ -199,13 +201,19 @@ public class EligibilityServiceImpl implements EligibilityService {
 		for (EligibilityDetails entity : entities) {
 
 			table.addCell(entity.getPlanName());
+
 			table.addCell(entity.getPlanStatus());
+
 			table.addCell(String.valueOf(entity.getMobileNumber()));
+
 			table.addCell(String.valueOf((Character) entity.getGender()));
+
 			table.addCell(String.valueOf(entity.getSsn()));
+
 			table.addCell(entity.getEmaiId());
 		}
 		document.add(table);
+
 		document.close();
 	}
 
