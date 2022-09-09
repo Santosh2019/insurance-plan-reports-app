@@ -23,7 +23,7 @@ public class AppRunner implements ApplicationRunner {
 		elgDetails.setMobileNumber(9325691241l);
 		elgDetails.setGender('M');
 		elgDetails.setSsn(1256545646l);
-		elgDetails.setPlanStatus("Approved");
+		elgDetails.setPlanStatus("Denied");
 		elgDetails.setEmaiId("slimbale@gmail.com");
 		repo.save(elgDetails);
 
@@ -34,14 +34,14 @@ public class AppRunner implements ApplicationRunner {
 		object.setMobileNumber(9325691241l);
 		object.setGender('F');
 		object.setSsn(1256545646l);
-		object.setPlanStatus("Denied");
+		object.setPlanStatus("Approved");
 		object.setEmaiId("gajananl.coder@gmail.com");
 		repo.save(object);
 
 		EligibilityDetails object1 = new EligibilityDetails();
 		object1.setEligibilityId(3);
 		object1.setName("Govind");
-		object1.setPlanName("LINUX");
+		object1.setPlanName("JAVA");
 		object1.setMobileNumber(9325691241l);
 		object1.setGender('M');
 		object1.setSsn(1256545646l);

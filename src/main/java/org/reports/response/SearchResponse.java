@@ -5,17 +5,25 @@ import lombok.Data;
 @Data
 public class SearchResponse {
 
+	private String planName;
+	
 	private String planStatus;
 
-	private String planName;
+	private Long mobileNumber;
+	
+	private String emaiId;
+	
+	private Character gender;
 
 	private Long ssn;
 
-	private long mobileNumber;
+	public String getPlanName() {
+		return planName;
+	}
 
-	private String emaiId;
-
-	private Character gender;
+	public void setPlanName(String planName) {
+		this.planName = planName;
+	}
 
 	public String getPlanStatus() {
 		return planStatus;
@@ -25,12 +33,8 @@ public class SearchResponse {
 		this.planStatus = planStatus;
 	}
 
-	public String getPlanName() {
-		return planName;
-	}
-
-	public void setPlanName(String planName) {
-		this.planName = planName;
+	public void setMobileNumber(Long mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
 	public Long getSsn() {
